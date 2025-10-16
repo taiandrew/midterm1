@@ -122,7 +122,7 @@ public:
         // Else, traverse to position
         Node* temp = head;
     
-        for (int i = 1; i < pos; i++){      // Loop up to pos-1 times
+        for (int i = 1; i < pos; i++){      // Loop up to pos-1 times to traverse to pos
             if (!temp) { // Out of bounds (previous iteration temp->next was null)
                 cout << "Position doesn't exist." << endl;
                 return;
@@ -260,6 +260,7 @@ public:
     }
 
     // ADDITION
+    // Note interpretation of "first element" is head/index 0
     void every_other_element() {
         // Prints every other element, starting from head (even indexed)
         // Note: modification of print() fn
@@ -290,8 +291,8 @@ int main() {
 
     // Create a list for testing
     DoublyLinkedList test;
-    for (int i = 0; i < 5; i++) {
-        test.push_back(i);
+    for (int i = 0; i < 10; i++) {
+        test.push_back(i*5);
     }
 
     // Print fns
