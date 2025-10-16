@@ -263,12 +263,18 @@ public:
     // ADDITION
     void every_other_element() {
         // Prints every other element, starting from head (even indexed)
-        
+
         Node* current = head; // Start at head
-        if(!current) { // Empty list
+        if (!current) { // Empty list
             cout << "List is empty." << endl;
             return;
         }
+        
+        while (current) {   // Traverse list backwards
+            cout << current->data << " "; // Print value
+            current = current->prev; // Move to previous node
+        }
+        cout << endl;
 
     }
 };
