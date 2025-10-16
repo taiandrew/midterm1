@@ -265,16 +265,19 @@ public:
         // Prints every other element, starting from head (even indexed)
         // Note: modification of print() fn
 
-        Node* current = head; // Start at head
-        if (!current) { // Empty list
+        // Start at head; check empty list
+        Node* current = head;
+        if (!current) {
             cout << "List is empty." << endl;
             return;
         }
-        int index = 0;  // Index counter
-        while (current) {   // Traverse list
+
+        // Printing every other element
+        int index = 0;          // Keep track of index
+        while (current) {       // Traverse list
             if (index % 2 == 0)  // Even index
-                cout << current->data << " "; // Print value
-            current = current->next; // Move to next node
+                cout << current->data << " ";
+            current = current->next;
             index++;
         }
         cout << endl;
@@ -286,6 +289,7 @@ public:
 int main() {
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
 
+    // Create a list for testing
     
     return 0;
 }
