@@ -33,8 +33,12 @@ public:
     // constructor
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
-    // Insert node after position (0 index)
+    
     void insert_after(int value, int position) {
+        // Insert node after position (0 index)
+        // args:
+        // - value: int to store in new node
+        // - position: index after which to insert new node]
 
         // Validation: index must be at least 0
         if (position < 0) {
@@ -72,26 +76,32 @@ public:
     }
 
     void delete_val(int value) {
+        // Delete first node with value
+        // arg: value to delete
+
+        // Empty list; don't do anything
         if (!head) return;
 
+        // Traverse list to find value
         Node* temp = head;
         
-        while (temp && temp->data != value)
+        while (temp && temp->data != value) // Keep going until value or end
             temp = temp->next;
 
-        if (!temp) return; 
+        if (!temp) return; // Value not found; don't do anything
 
+        // Value found -- remove node and update adjacent pointers
         if (temp->prev)
-            temp->prev->next = temp->next;
+            temp->prev->next = temp->next;  // If not head, previous node pionts to next node
         else
-            head = temp->next; 
+            head = temp->next;      // Else, update head
 
         if (temp->next)
-            temp->next->prev = temp->prev;
+            temp->next->prev = temp->prev;  // If not tail, next node points back to previous node
         else
-            tail = temp->prev; 
+            tail = temp->prev;    // Else, update tail
 
-        delete temp;
+        delete temp; // Delete the node
     }
 
     void delete_pos(int pos) {
