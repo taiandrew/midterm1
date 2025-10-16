@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/andrewtai/Desktop/COMSC_210/midterm1/210-midterm-1-starter-2'
+relocations:     []
+...

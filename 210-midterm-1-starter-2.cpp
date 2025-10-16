@@ -7,7 +7,7 @@ const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 // Class implementing a doubly linked list
 class DoublyLinkedList {
 
-// private data members: node struct (not instances) and head / tail ptrs
+// private data members: node struct (NOT instances) and head / tail ptrs
 private:
 
     // struct for nodes
@@ -18,8 +18,8 @@ private:
 
         // constructor for node; default next and prev are null
         Node(int val, Node* p = nullptr, Node* n = nullptr) {
-            data = val; 
-            prev = p;
+            data = val; // Set data
+            prev = p;   // Set prev and next pointers
             next = n;
         }
     };
@@ -30,10 +30,9 @@ private:
 // Public members: methods for operations on list
 public:
 
-    // constructor
+    // constructor; initializes head and tail to null
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
-    
     void insert_after(int value, int position) {
         // Insert node after position (0 index)
         // args:
@@ -287,9 +286,17 @@ public:
 
 // Main
 int main() {
-    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
+    //cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
 
     // Create a list for testing
-    
+    DoublyLinkedList test;
+    for (int i = 0; i < 5; i++) {
+        test.push_back(i);
+    }
+
+    // Print fns
+    test.print();
+    test.every_other_element();
+
     return 0;
 }
