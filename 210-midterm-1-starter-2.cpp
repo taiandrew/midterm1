@@ -272,7 +272,7 @@ public:
             return;
         }
 
-        // Printing every other element
+        // Printing every other element. Will use index to keep track of even
         int index = 0;          // Keep track of index
         while (current) {       // Traverse list
             if (index % 2 == 0)  // Even index
