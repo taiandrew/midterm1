@@ -1,14 +1,22 @@
 #include <iostream>
 using namespace std;
 
+// Constants
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 
+// Class implementing a doubly linked list
 class DoublyLinkedList {
+
+// private data members: node struct (not instances) and head / tail ptrs
 private:
+
+    // struct for nodes
     struct Node {
-        int data;
-        Node* prev;
-        Node* next;
+        int data;       // Stores an integer
+        Node* prev;     // Pointer to prev node
+        Node* next;     // Pointer to next node
+
+        // constructor for node
         Node(int val, Node* p = nullptr, Node* n = nullptr) {
             data = val; 
             prev = p;
@@ -16,10 +24,13 @@ private:
         }
     };
 
-    Node* head;
-    Node* tail;
+    Node* head; // pointer to head node (first node)
+    Node* tail; // pointer to tail node (last node)
 
+// Public members: methods for operations on list
 public:
+
+    // constructor
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
     void insert_after(int value, int position) {
