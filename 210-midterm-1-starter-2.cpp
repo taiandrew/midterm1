@@ -16,7 +16,7 @@ private:
         Node* prev;     // Pointer to prev node
         Node* next;     // Pointer to next node
 
-        // constructor for node
+        // constructor for node; default next and prev are null
         Node(int val, Node* p = nullptr, Node* n = nullptr) {
             data = val; 
             prev = p;
@@ -33,35 +33,42 @@ public:
     // constructor
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
+    // Insert node after position (0 index)
     void insert_after(int value, int position) {
+
+        // Validation: index must be at least 0
         if (position < 0) {
             cout << "Position must be >= 0." << endl;
             return;
         }
 
+        // If list is empty, insert new node at head (and tail)
         Node* newNode = new Node(value);
         if (!head) {
             head = tail = newNode;
             return;
         }
 
-        Node* temp = head;
-        for (int i = 0; i < position && temp; ++i)
-            temp = temp->next;
+        // Traverse to specified position
+        Node* temp = head;      // Start at head
+        for (int i = 0; i < position && temp; ++i)      // Loop up to i times, or until end
+            temp = temp->next; // Move to next node
 
+        // Bounds check: if temp->next was null above, position is past end
         if (!temp) {
             cout << "Position exceeds list size. Node not inserted.\n";
-            delete newNode;
+            delete newNode;     // Clean up memry
             return;
         }
 
-        newNode->next = temp->next;
-        newNode->prev = temp;
-        if (temp->next)
-            temp->next->prev = newNode;
+        // Insert new node after temp; note temp is pointer to node before desired position
+        newNode->next = temp->next;      // New node points to temp's next
+        newNode->prev = temp;            // New node points back to temp
+        if (temp->next)                 
+            temp->next->prev = newNode;   // If there is a node after temp (before insertion), it now points back to new node
         else
-            tail = newNode;
-        temp->next = newNode;
+            tail = newNode;              // If not, new node is new tail
+        temp->next = newNode;           // temp points to new node
     }
 
     void delete_val(int value) {
