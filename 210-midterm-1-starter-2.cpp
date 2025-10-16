@@ -222,40 +222,46 @@ public:
         delete temp; // Delete node
     }
 
+
+    // Destructor
     ~DoublyLinkedList() {
-        while (head) {
-            Node* temp = head;
-            head = head->next;
-            delete temp;
+        while (head) {  // Traverse the list via while loop
+            Node* temp = head; // Save ptr to this node to delete
+            head = head->next; // Move head down to next
+            delete temp; // Delete node
         }
     }
+
+    // Print the whole list
     void print() {
-        Node* current = head;
-        if (!current) {
+        Node* current = head; // Start at head
+        if (!current) { // Empty list
             cout << "List is empty." << endl;
             return;
         }
-        while (current) {
-            cout << current->data << " ";
-            current = current->next;
+        while (current) {   // Traverse list
+            cout << current->data << " ";   // Print current node's value
+            current = current->next; // Move to next node
         }
         cout << endl;
     }
 
+    // Print whole list in reverse order
     void print_reverse() {
-        Node* current = tail;
-        if (!current) { 
+        Node* current = tail;   // Start at tail
+        if (!current) {  // Empty list
             cout << "List is empty." << endl;
             return;
         }
-        while (current) {
-            cout << current->data << " ";
-            current = current->prev;
+        while (current) {   // Traverse list backwards
+            cout << current->data << " "; // Print value
+            current = current->prev; // Move to previous node
         }
         cout << endl;
     }
 };
 
+// Main
 int main() {
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
 
