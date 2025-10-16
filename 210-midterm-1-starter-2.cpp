@@ -105,40 +105,48 @@ public:
     }
 
     void delete_pos(int pos) {
+        // Delete node at position. NOTE: appears to be 1-indexed
+        // arg: position of node to delete
+
+        // Empty list; don't do anything
         if (!head) {
             cout << "List is empty." << endl;
             return;
         }
-    
+        
+        // Call pop_front if pos is 1
         if (pos == 1) {
             pop_front();
             return;
         }
-    
+        
+        // Else, traverse to position
         Node* temp = head;
     
-        for (int i = 1; i < pos; i++){
-            if (!temp) {
+        for (int i = 1; i < pos; i++){      // Loop up to pos-1 times
+            if (!temp) { // Out of bounds (previous iteration temp->next was null)
                 cout << "Position doesn't exist." << endl;
                 return;
             }
             else
-                temp = temp->next;
+                temp = temp->next;      // Traverse
         }
         if (!temp) {
-            cout << "Position doesn't exist." << endl;
+            cout << "Position doesn't exist." << endl;      // Out of bounds
             return;
         }
-    
+        
+        // Temp happened to be tail; call pop_back()
         if (!temp->next) {
             pop_back();
             return;
         }
-    
-        Node* tempPrev = temp->prev;
-        tempPrev->next = temp->next;
-        temp->next->prev = tempPrev;
-        delete temp;
+        
+        // Else, node is strictly inside. Update adjacent pointers and delete.
+        Node* tempPrev = temp->prev;  
+        tempPrev->next = temp->next;    // Prev node points to node after temp
+        temp->next->prev = tempPrev;    // Node after temp poitns back to prev node
+        delete temp; // Delete the node
     }
 
     void push_back(int v) {
