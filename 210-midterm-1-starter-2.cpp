@@ -259,6 +259,18 @@ public:
         }
         cout << endl;
     }
+
+    // ADDITION
+    void every_other_element() {
+        // Prints every other element, starting from head (even indexed)
+        
+        Node* current = head; // Start at head
+        if(!current) { // Empty list
+            cout << "List is empty." << endl;
+            return;
+        }
+
+    }
 };
 
 // Main
